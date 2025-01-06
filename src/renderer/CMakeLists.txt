@@ -10,6 +10,7 @@ target_sources( ${PROJECT_NAME} PUBLIC "Renderer.cpp" "Renderer.hpp" )
 target_include_directories( ${PROJECT_NAME} PUBLIC 
     "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/include"
     "${EXTERNAL_PATH/glfw/include}"
+    "${EXTERNAL_PATH/glm}"
     )
 target_link_directories( ${PROJECT_NAME} PUBLIC 
     "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
