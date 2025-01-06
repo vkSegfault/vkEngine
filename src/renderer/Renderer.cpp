@@ -30,7 +30,7 @@ void Renderer::initWindow(int windowWidth, int windowHeight)
 
 void Renderer::createInstance()
 {
-    std::cout << "Initializing Vulkan..." << std::endl;
+    std::cout << "Initializing Vulkan Instance..." << std::endl;
 
     VkApplicationInfo appInfo{};
     appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
@@ -49,6 +49,12 @@ void Renderer::createInstance()
 
     glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
+    std::cout << "GLFW requires " << glfwExtensionCount << " extensions:\n";
+    for(int i = 0; i < glfwExtensionCount; ++i)
+    {
+        std::cout << "\t" << glfwExtensions[i] << std::endl;
+    }
+
     createInfo.enabledExtensionCount = glfwExtensionCount;
     createInfo.ppEnabledExtensionNames = glfwExtensions;
 
@@ -62,7 +68,7 @@ void Renderer::createInstance()
     }
     else
     {
-        throw std::runtime_error("failed to create instance!");
+        throw std::runtime_error("Failed to create vkInstance!");
     }
 
 }
@@ -72,7 +78,7 @@ void Renderer::fetchSupportedInstanceExtensions()
     uint32_t extensionCount = 0;
     vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
 
-    std::cout << extensionCount << " extensions supported\n";
+    std::cout << extensionCount << " Instance extensions supported\n";
 
     extensions.resize(extensionCount);
 
