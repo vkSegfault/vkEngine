@@ -10,6 +10,7 @@
 #include <vec4.hpp>
 #include <mat4x4.hpp>
 
+
 void Renderer::Init()
 {
     std::cout << "Init" << std::endl;
