@@ -8,4 +8,4 @@ add_subdirectory("renderer")
 
 add_executable(Engine main.cpp)
 target_include_directories( ${PROJECT_NAME} PUBLIC "renderer")
-target_link_libraries( ${PROJECT_NAME} Renderer )
+target_link_libraries( ${PROJECT_NAME} Renderer "dl" "pthread" "X11" "Xxf86vm" "Xrandr" "Xi" )

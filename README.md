@@ -1,5 +1,4 @@
 # vkEngine
 
-`mkdir build && cd build`
-`cmake ..`
-`cmake --build .`
+`mkdir build && cmake -S . -B build`
+`cd build && cmake --build .`
