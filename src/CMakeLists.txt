@@ -15,4 +15,4 @@ target_link_directories( ${PROJECT_NAME} PUBLIC
     "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
 )
 
-target_link_libraries( ${PROJECT_NAME} Renderer "dl" "pthread" "X11" "Xxf86vm" "Xrandr" "Xi" )
+target_link_libraries( ${PROJECT_NAME} Renderer "dl" "pthread" "libvulkan.so" "X11" "Xxf86vm" "Xrandr" "Xi" )
