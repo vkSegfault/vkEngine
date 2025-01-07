@@ -6,6 +6,8 @@ project(Engine
 
 add_subdirectory("renderer")
 
+set( EXTERNAL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../external" )
+
 add_executable(Engine main.cpp)
 target_include_directories( ${PROJECT_NAME} PUBLIC "renderer")
 
