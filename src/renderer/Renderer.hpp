@@ -10,6 +10,7 @@ public:
     void createInstance();
     void fetchSupportedInstanceExtensions();
     void mainWindowLoop();
+    void destroyVulkan();
     void destroyWindow();
 
 private:

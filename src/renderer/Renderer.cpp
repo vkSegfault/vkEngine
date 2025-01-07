@@ -100,6 +100,11 @@ void Renderer::mainWindowLoop()
     }
 }
 
+void Renderer::destroyVulkan()
+{
+    vkDestroyInstance(instance, nullptr);
+}
+
 void Renderer::destroyWindow()
 {
     glfwDestroyWindow(window);
