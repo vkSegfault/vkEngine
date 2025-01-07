@@ -16,6 +16,7 @@ target_include_directories( ${PROJECT_NAME} PUBLIC
 )
 target_link_directories( ${PROJECT_NAME} PUBLIC 
     "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
+    "../../external/vulkan/1.3.296.0/lib"
     "${EXTERNAL_PATH}/glfw/lib"
 )
 target_link_libraries( ${PROJECT_NAME} PUBLIC "libvulkan.so.1" "libglfw3.a" )
