@@ -18,6 +18,6 @@ target_link_directories( ${PROJECT_NAME} PUBLIC
 "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
 "${EXTERNAL_PATH}/glfw/lib"
 )
-target_link_libraries( ${PROJECT_NAME} PUBLIC "vulkan" "libglfw3.a" )
+target_link_libraries( ${PROJECT_NAME} PUBLIC "libvulkan.so.1" "libglfw3.a" )
 
 target_sources( ${PROJECT_NAME} PUBLIC "Renderer.cpp" "Renderer.hpp" )
