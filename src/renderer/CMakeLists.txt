@@ -7,16 +7,16 @@ set( VULKAN_VER "1.3.296.0" )
 
 add_library( ${PROJECT_NAME} STATIC )
 
-message( PROJECT_NAME="${PROJECT_NAME}" )
+message( PROJECT_NAME="${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib" )
 
 target_include_directories( ${PROJECT_NAME} PUBLIC 
-"${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/include"
-"${EXTERNAL_PATH}/glfw/include"
-"${EXTERNAL_PATH}/glm"
+    "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/include"
+    "${EXTERNAL_PATH}/glfw/include"
+    "${EXTERNAL_PATH}/glm"
 )
 target_link_directories( ${PROJECT_NAME} PUBLIC 
-"${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
-"${EXTERNAL_PATH}/glfw/lib"
+    "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib"
+    "${EXTERNAL_PATH}/glfw/lib"
 )
 target_link_libraries( ${PROJECT_NAME} PUBLIC "libvulkan.so.1" "libglfw3.a" )
 
