@@ -5,9 +5,16 @@ project(Renderer)
 set( EXTERNAL_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../external" )
 set( VULKAN_VER "1.3.296.0" )
 
+# setting below ENV VARs only works at build time, not runtime
+set( ENV{VULKAN_SDK} "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}")
+set( ENV{VK_ADD_LAYER_PATH} "$ENV{VULKAN_SDK}/share/vulkan/explicit_layer.d")
+# run below script to make use of Validation Layers provided by Kronos
+# export VULKAN_SDK=/home/<path_to_engine>/vkEngine/external/vulkan/1.3.296.0
+# export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
+
 add_library( ${PROJECT_NAME} STATIC )
 
-message( PROJECT_NAME="${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/lib" )
+message( PROJECT_NAME="$ENV{VK_LAYER_PATH}" )
 
 target_include_directories( ${PROJECT_NAME} PUBLIC 
     "${EXTERNAL_PATH}/vulkan/${VULKAN_VER}/include"
