@@ -44,6 +44,14 @@ void Renderer::createInstance()
     createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
     createInfo.pApplicationInfo = &appInfo;
 
+    ////// Validation Layers
+#ifndef NDEBUG
+    addLayer("VK_LAYER_KHRONOS_validation");
+    createInfo.enabledLayerCount = enabledLayers.size();
+    createInfo.ppEnabledLayerNames = enabledLayers.data();
+#endif
+
+    ////// Instance extensions
     uint32_t glfwExtensionCount = 0;
     const char** glfwExtensions;
 
@@ -80,16 +88,30 @@ void Renderer::fetchSupportedInstanceExtensions()
 
     std::cout << extensionCount << " Instance extensions supported\n";
 
-    extensions.resize(extensionCount);
+    supportedExtensions.resize(extensionCount);
 
-    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, extensions.data());
+    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, supportedExtensions.data());
 
-    std::cout << "Available Instance extensions:\n";
-
-    for (const auto& extension : extensions) {
+    for (const auto& extension : supportedExtensions) {
         std::cout << '\t' << extension.extensionName << '\n';
     }
 
+}
+
+void Renderer::fetchAvailableValidationLayers()
+{
+    uint32_t layerCount;
+    vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+
+    std::cout << layerCount << " Validation Layers available\n";
+
+    availableLayers.resize(layerCount);
+
+    vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
+
+    for (const auto& layer : availableLayers) {
+        std::cout << '\t' << layer.layerName << '\n';
+    }
 }
 
 void Renderer::mainWindowLoop()
@@ -109,4 +131,10 @@ void Renderer::destroyWindow()
 {
     glfwDestroyWindow(window);
     glfwTerminate();
+}
+
+void Renderer::addLayer(const char* layer_name)
+{
+    std::cout << "Adding >>> " << layer_name << " <<< validation layer\n";
+    enabledLayers.push_back(layer_name);
 }

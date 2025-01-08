@@ -8,8 +8,9 @@ int main()
 
     // create and initialize
     r.initWindow(800, 600);
-    r.createInstance();
     r.fetchSupportedInstanceExtensions();
+    r.fetchAvailableValidationLayers();
+    r.createInstance();
 
     // process main loop
     r.mainWindowLoop();
